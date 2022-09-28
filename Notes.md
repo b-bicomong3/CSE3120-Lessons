@@ -60,3 +60,23 @@ DIE_1 = Die(6)
 print(DIE_1.getRoll())  # Output a random number between 1 and 6
 DIE_2 = Die(20)
 ```
+An __Object__ is a unique set of data and functions instantiated from a class. An object accesses attributes and methods using _dot notation_ which identifies the object, then the attribute or method.
+
+```python
+<object name>.<attribute name> --> Value
+<object name>.<method name>(arugments) --> Calls the method
+```
+
+## Why OOP? (This section is important)
+1. __Encapsulation__ is the process of protecting or hiding data through the implementation of an _interface_. The interface is often a collection of methods such as setter (modifier) methods and getter (accessor) methods that other objects can interact with.
+    * A television encapsulates all hardware and software into a small box which the user interact with through a series of buttons (on the device or on a remote control).
+    * It is important to empathize the need for setter and getter methods and how each of the attributes within a class should only be accessed through these methods.
+```python
+class Main:
+    def __init__(self):
+        self.UNPROTECTED = 0
+        self.__PROTECTED = 1
+MAIN = Main()
+print("MAIN.UNPROTECTED") # print 0
+print("MAIN.__PROTECTED") # ERROR!
+```
