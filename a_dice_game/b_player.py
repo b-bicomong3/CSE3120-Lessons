@@ -57,10 +57,15 @@ class Player:
         for die in self.HELD:
             die.displayDie()
 
-        # ask to hold more dice
-        AGAIN = input("Hold More? (y/N) ")
-        if AGAIN.upper() == "Y":
-            return self.holdDie()
+        # ask to not roll
+        BANK = input("Would you like to bank? (y/N)")
+        if BANK.upper() == "Y":
+            return self.getScore()
+        else:
+            # ask to hold more dice
+            AGAIN = input("Hold More? (y/N) ")
+            if AGAIN.upper() == "Y":
+                return self.holdDie()
 
     def resetDie(self):
         """
