@@ -5,51 +5,61 @@ Title: Player class
 Author: Beatrix Bicomong
 Date-created: 04-10-2022
 """
-from deck import Deck
 
 
-class player:
+class Player:
     """
     The player for the game Black Jack
     """
 
-    def __init__(self):
+    def __init__(self, NAME):
         """
         Create player object
         """
-        self.DECK = []
-        for i in range(2):
-            self.DECK.append(Deck())
-        self.HELD = []
-        self.SCORE = 0
+        self.__HAND_VALUE = 0
+        self.__WINS = 0
+        self.__HAND = []
+        self.__HOLD = False
+        self.__NAME = NAME
 
     # MODIFIERS
 
-    def addScore(self, POINTS):
+    def takeCard(self, CARD):
         """
-        Adds player score
-        :param POINTS: int
-        :return: None
+        adds a card to the player's hand
         """
-        self.SCORE += POINTS
+        self.__HAND.append(CARD)
 
-    def holdCard(self):
-        """
-        User selects card
-        :return: None
-        """
-        print("Select a card to hold")
-        for i in range(len(self.DECK)):
-            print(f"{i + 1}. {self.DECK[i]}")
-        CARD = int(input("> ")) - 1
-        self.HELD.append(self.DECK.pop)
+    def setHandValue(self, VALUE):
+        self.__HAND_VALUE = VALUE
 
+    def holdHand(self):
+        self.__HOLD = True
 
-    # ACCESSORS
+    def resetHand(self):
+        self.__HOLD = False
+        self.__HAND = []
+        self.__HAND_VALUE = 0
 
-if __name__ == "__main__":
-    DECK = Deck()
-    DECK.shuffle()
+    def addScore(self):
+        self.__WINS += 1
 
-    PLAYER = player()
-    PLAYER.holdCard()
+    # ACCESSOR
+    def getName(self):
+        return self.__NAME
+
+    def getHand(self):
+        return self.__HAND
+
+    def getHandValue(self):
+        return self.__HAND_VALUE
+
+    def isHold(self):
+        return self.__HOLD
+
+    def isWinner(self):
+        if self.__WINS >= 3:
+            return True
+        else:
+            return False
+
